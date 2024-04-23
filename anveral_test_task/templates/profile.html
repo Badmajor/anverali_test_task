@@ -50,15 +50,17 @@
             <h2>Информация о пользователе</h2>
             <p><strong>Имя:</strong> {{ user }}</p>
             <p><strong>Электронная почта:</strong> {{ user.email }}</p>
+            <p><strong>Опыт:</strong> {{ user.experience }}</p>
+            <p><strong>Контакты:</strong> {{ user.contact }}</p>
             <p><strong>Дата регистрации:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
             <!-- Добавьте другие поля профиля, если необходимо -->
         </div>
         <div class="block">
             {% if role == 'buyer' %}
-                <h1>Мои проекты:</h1>
+                <h1>Мои Проекты:</h1>
                 <ul>
-                    {% if user.projects.all %}
-                        {% for project in user.projects.all %}
+                    {% if user.project %}
+                        {% for project in user.project.all %}
                             <li>{{ project }}</li>
                         {% endfor %}
                     {% endif %}
@@ -66,20 +68,12 @@
             {% elif role == 'seller' %}
                 <h1>Мои Заказы:</h1>
                 <ul>
-                    {% if user.orders.all %}
-                        {% for order in user.orders.all %}
+                    {% if user.order %}
+                        {% for order in user.order.all %}
                             <li>{{ order }}</li>
                         {% endfor %}
                     {% endif %}
                 </ul>
-
-            {% else %}
-                <a href="{% url 'profile_role' role='seller'%}">
-                    <button>Я продавец</button>
-                </a>
-                <a href="{% url 'profile_role' role='buyer' %}">
-                    <button>Я покупатель</button>
-                </a>
             {% endif %}
         </div>
         <div class="role">
