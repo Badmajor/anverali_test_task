@@ -62,7 +62,7 @@ ALLOWED_HOSTS=127.0.0.1,
 #DATABASE
 POSTGRES_DB=anverali
 POSTGRES_USER=anverali
-POSTGRES_PASSWORD=supersecretpass" > .env
+POSTGRES_PASSWORD=supersecretpass" > .env"
 
 
 # Запустить контейнер с БД PostgreSQL
