@@ -40,20 +40,26 @@
 
 Для запуска проекта выполните следующие шаги:
 
+
+### Создайте виртуальное окружение
 ```bash
-# Создайте виртуальное окружение
 python -m venv venv
-
-# Активируйте виртуальное окружение
- # - linux
+```
+### Активируйте виртуальное окружение
+ #### - linux
+ ```bash
 source /venv/bin/activate 
- # - windows
+```
+ #### - windows
+ ```bash
 source /venv/Script/activate
-
-# Установите зависимости
+```
+### Установите зависимости
+```bash
 pip install -r requirements.txt
-
-# Создайте файл с переменными окружения
+```
+### Создайте файл с переменными окружения
+```bash
 echo "#DJANGO
 SECRET_KEY_DJANGO=django-insecure
 DEBUG=True
@@ -63,23 +69,30 @@ ALLOWED_HOSTS=127.0.0.1,
 POSTGRES_DB=anverali
 POSTGRES_USER=anverali
 POSTGRES_PASSWORD=supersecretpass" > .env"
+```
 
-
-# Запустить контейнер с БД PostgreSQL
+### Запустить контейнер с БД PostgreSQL
+```bash
 sudo docker run --name postgress_for_anverali 
 -e POSTGRES_PASSWORD=supersecretpass 
 -e POSTGRES_USER=anverali 
 -e POSTGRES_DB=anverali 
 -p 5432:5432 
 -d postgres
+```
 
-# Перейдите в папку с проектом
+### Перейдите в папку с проектом
+```bash
 cd anveral_test_task/
+```
 
-# Выполните миграции
+### Выполните миграции
+```bash
 python manage.py migrate
+```
 
-# Запустите сервер
+### Запустите сервер
+```bash
 python manage.py runserver
 ```
 
